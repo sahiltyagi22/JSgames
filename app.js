@@ -1,55 +1,54 @@
-
-let userChoiceDisplay = document.getElementById('userchoice')
-let computerChoiceDisplay = document.getElementById('computerchoice')
-let resultDisplay = document.getElementById('result')
-let possibleChoices = document.querySelectorAll('button')
-
-let userchoice
+const computerChoiceDisplay = document.getElementById('computer-choice')
+const userChoiceDisplay = document.getElementById('user-choice')
+const resultDisplay = document.getElementById('result')
+const possibleChoices = document.querySelectorAll('button')
+let userChoice
 let computerChoice
+let result
 
-possibleChoices.forEach(choice => choice.addEventListener ('click', (e)=>{
-    userchoice = e.target.id
-    userChoiceDisplay.innerHTML = userchoice
-    generateComputerChoice()
-    getResult()
+possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
+  userChoice = e.target.id
+  userChoiceDisplay.innerHTML = userChoice
+  generateComputerChoice()
+  getResult()
 }))
 
 function generateComputerChoice() {
-    const randomNumber = Math.floor(Math.random() * 3) + 1 // or you can use possibleChoices.length
-    
-    if (randomNumber === 1) {
-      computerChoice = 'rock'
-    }
-    if (randomNumber === 2) {
-      computerChoice = 'scissor'
-    }
-    if (randomNumber === 3) {
-      computerChoice = 'paper'
-    }
-    computerChoiceDisplay.innerHTML = computerChoice
+  const randomNumber = Math.floor(Math.random() * 3) + 1 // or you can use possibleChoices.length
+  
+  if (randomNumber === 1) {
+    computerChoice = 'rock'
   }
+  if (randomNumber === 2) {
+    computerChoice = 'scissors'
+  }
+  if (randomNumber === 3) {
+    computerChoice = 'paper'
+  }
+  computerChoiceDisplay.innerHTML = computerChoice
+}
 
-  function getResult() {
-    if (computerChoice === userchoice) {
-      result = 'its a draw!'
-    }
-    if (computerChoice === 'rock' && userchoice === "paper") {
-      result = 'you win!'
-    }
-    if (computerChoice === 'rock' && userchoice === "scissors") {
-      result = 'you lost!'
-    }
-    if (computerChoice === 'paper' && userchoice === "scissors") {
-      result = 'you win!'
-    }
-    if (computerChoice === 'paper' && userchoice === "rock") {
-      result = 'you lose!'
-    }
-    if (computerChoice === 'scissors' && userchoice === "rock") {
-      result = 'you win!'
-    }
-    if (computerChoice === 'scissors' && userchoice === "paper") {
-      result = 'you lose!'
-    }
-    resultDisplay.innerHTML = result
+function getResult() {
+  if (computerChoice === userChoice) {
+    result = 'its a draw!'
   }
+  if (computerChoice === 'rock' && userChoice === "paper") {
+    result = 'you win!'
+  }
+  if (computerChoice === 'rock' && userChoice === "scissors") {
+    result = 'you lost!'
+  }
+  if (computerChoice === 'paper' && userChoice === "scissors") {
+    result = 'you win!'
+  }
+  if (computerChoice === 'paper' && userChoice === "rock") {
+    result = 'you lose!'
+  }
+  if (computerChoice === 'scissors' && userChoice === "rock") {
+    result = 'you win!'
+  }
+  if (computerChoice === 'scissors' && userChoice === "paper") {
+    result = 'you lose!'
+  }
+  resultDisplay.innerHTML = result
+}
